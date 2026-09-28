@@ -4,7 +4,7 @@ import "./App_addon.css";
 import "./App_theme.css";
 
 function App() {
-  const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5000";
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://bandhan-bank-backend.onrender.com";
   const [theme, setTheme] = useState(() => {
     try { return localStorage.getItem("bandhan-theme") || "dark"; } catch { return "dark"; }
   });
