@@ -598,40 +598,101 @@ def test_db():
     except Exception as e:
         return jsonify({"message": "MongoDB Connection Failed!", "request_id": getattr(request, "request_id", None)}), 500
 
-
 @app.route("/admin/login", methods=["POST"])
 def admin_login():
     try:
         data = request.get_json() or {}
+
         user_id = str(data.get("user_id") or "").strip()
         password = str(data.get("password") or "")
+
         if not user_id or not password:
-            return jsonify({"success": False, "message": "User ID and password are required."}), 400
+            return jsonify({
+                "success": False,
+                "message": "User ID and password are required."
+            }), 400
+
         if len(user_id) > 120 or len(password) > 128:
-            return jsonify({"success": False, "message": "Invalid login input."}), 400
+            return jsonify({
+                "success": False,
+                "message": "Invalid login input."
+            }), 400
 
         key = get_login_key("admin", user_id)
+
         locked, minutes = is_login_locked(key)
+
         if locked:
-            return jsonify({"success": False, "message": f"Too many failed attempts. Try again in about {minutes} minutes."}), 429
+            return jsonify({
+                "success": False,
+                "message": f"Too many failed attempts. Try again in about {minutes} minutes."
+            }), 429
 
         admin = admins_collection.find_one(
             {"user_id": user_id},
-            {"_id": 0, "user_id": 1, "role": 1, "name": 1, "status": 1, "password": 1}
+            {
+                "_id": 0,
+                "user_id": 1,
+                "role": 1,
+                "name": 1,
+                "status": 1,
+                "password": 1
+            }
         )
-        if not admin or admin.get("status") != "active" or not check_password_hash(admin.get("password", ""), password):
+
+        if (
+            not admin
+            or admin.get("status") != "active"
+            or not check_password_hash(
+                admin.get("password", ""),
+                password
+            )
+        ):
             locked_now = record_failed_login(key)
+
             if locked_now:
-                return jsonify({"success": False, "message": "Too many failed attempts. Login temporarily blocked for 10 minutes."}), 429
-            return jsonify({"success": False, "message": "Invalid admin User ID or password."}), 401
+                return jsonify({
+                    "success": False,
+                    "message": "Too many failed attempts. Login temporarily blocked for 10 minutes."
+                }), 429
+
+            return jsonify({
+                "success": False,
+                "message": "Invalid admin User ID or password."
+            }), 401
 
         clear_login_attempts(key)
-        token = create_access_token(admin["user_id"], admin["role"], admin.get("name", "Administrator"))
-        create_audit_log("LOGIN", f"Admin login successful: {admin['user_id']}.", "admin", admin["user_id"])
-        return jsonify({"success": True, "message": "Admin login successful!", "token": token, "user": {"user_id": admin["user_id"], "role": admin["role"]}}), 200
-    except Exception as e:
-        return jsonify({"success": False, "message": "Server error occurred.", "request_id": getattr(request, "request_id", None)}), 500
 
+        token = create_access_token(
+            admin["user_id"],
+            admin.get("role", "admin"),
+            admin.get("name", "Administrator")
+        )
+
+        create_audit_log(
+            "LOGIN",
+            f"Admin login successful: {admin['user_id']}.",
+            "admin",
+            admin["user_id"]
+        )
+
+        return jsonify({
+            "success": True,
+            "message": "Admin login successful!",
+            "token": token,
+            "user": {
+                "user_id": admin["user_id"],
+                "role": admin.get("role", "admin")
+            }
+        }), 200
+
+    except Exception as e:
+        print("ADMIN LOGIN ERROR:", repr(e), flush=True)
+
+        return jsonify({
+            "success": False,
+            "message": f"Server error occurred: {str(e)}"
+        }), 500
 
 def validate_staff_photo(photo):
     photo = str(photo or "")
