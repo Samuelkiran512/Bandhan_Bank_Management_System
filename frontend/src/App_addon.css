@@ -1,0 +1,73 @@
+/* =========================================================
+   BANDHAN BANK — TODAY'S FEATURE ADD-ON
+   Add this AFTER the existing App.css.
+   Existing App.css is NOT replaced by this file.
+   ========================================================= */
+
+.forgot-password-link {
+  display: block;
+  margin: 14px auto 0;
+  border: 0;
+  background: transparent;
+  color: #8fa4ff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.forgot-password-link:hover { text-decoration: underline; }
+
+.notification-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #8d9ab8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 4px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.notification-item.is-unread { background: rgba(73,96,255,.055); }
+.notification-item.is-read { opacity: .78; }
+.notification-item strong { color: #fff; }
+.notification-item p { margin: 6px 0; color: #9aa6c2; }
+.notification-item small { color: #65728e; }
+
+.notification-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.notification-read-btn,
+.notification-delete-btn,
+.staff-delete-btn {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 9px;
+  padding: 7px 10px;
+  background: rgba(255,255,255,.045);
+  color: #d9e0f2;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.notification-read-btn:hover { border-color: rgba(104,139,255,.5); }
+.notification-delete-btn:hover,
+.staff-delete-btn:hover { border-color: rgba(255,90,125,.5); color: #ff8ca8; }
+
+@media (max-width: 700px) {
+  .notification-item { flex-direction: column; }
+  .notification-actions { width: 100%; }
+}

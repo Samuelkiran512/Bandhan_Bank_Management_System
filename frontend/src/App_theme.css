@@ -1,0 +1,442 @@
+/* =========================================================
+   BANDHAN BANK — GALAXY / GLASS THEME LAYER
+   ADD-ON: keep the existing App.css unchanged.
+   ========================================================= */
+
+:root {
+  --bb-bg: #eef3ff;
+  --bb-bg-2: #f8faff;
+  --bb-surface: rgba(255, 255, 255, 0.72);
+  --bb-surface-strong: rgba(255, 255, 255, 0.9);
+  --bb-border: rgba(89, 102, 150, 0.16);
+  --bb-text: #111827;
+  --bb-muted: #64748b;
+  --bb-blue: #2563eb;
+  --bb-purple: #7c3aed;
+  --bb-shadow: 0 20px 60px rgba(37, 54, 100, 0.12);
+  --bb-glow: rgba(99, 102, 241, 0.18);
+}
+
+html[data-theme="dark"] {
+  --bb-bg: #050816;
+  --bb-bg-2: #0a1024;
+  --bb-surface: rgba(15, 23, 52, 0.64);
+  --bb-surface-strong: rgba(18, 27, 60, 0.86);
+  --bb-border: rgba(148, 163, 255, 0.17);
+  --bb-text: #f4f7ff;
+  --bb-muted: #aab6d3;
+  --bb-blue: #5ea7ff;
+  --bb-purple: #a78bfa;
+  --bb-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  --bb-glow: rgba(92, 92, 255, 0.24);
+}
+
+html, body, #root { min-height: 100%; }
+html { background: var(--bb-bg); transition: background 0.35s ease; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(59, 130, 246, 0.13), transparent 30%),
+    radial-gradient(circle at 88% 18%, rgba(124, 58, 237, 0.14), transparent 28%),
+    linear-gradient(135deg, var(--bb-bg), var(--bb-bg-2));
+  color: var(--bb-text);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+  background:
+    radial-gradient(circle at 50% 110%, rgba(37, 99, 235, 0.12), transparent 34%),
+    radial-gradient(circle at 95% 75%, rgba(124, 58, 237, 0.10), transparent 30%);
+}
+.app, .admin-dashboard, .login-page, .main-content { color: var(--bb-text) !important; }
+.app { min-height: 100vh; background: transparent !important; }
+
+.top-header, .portal-card, .login-card, .dashboard-card, .stat-card, .activity-card,
+.progress-card, .staff-management-card, .staff-form, .staff-table-container,
+.security-section, .quick-action, .overdue-card, .admin-profile, .card-header,
+.table-header, .table-row, .dashboard-header, .dashboard-footer {
+  border-color: var(--bb-border) !important;
+}
+.portal-card, .login-card, .dashboard-card, .stat-card, .activity-card, .progress-card,
+.staff-management-card, .staff-form, .staff-table-container, .security-section,
+.quick-action, .overdue-card, .admin-profile {
+  background: var(--bb-surface) !important;
+  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+  box-shadow: var(--bb-shadow) !important;
+}
+.portal-card:hover, .quick-action:hover, .stat-card:hover, .dashboard-card:hover {
+  box-shadow: 0 24px 80px var(--bb-glow) !important; transform: translateY(-2px);
+}
+.top-header {
+  background: var(--bb-surface-strong) !important;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08) !important;
+}
+.brand-logo, .portal-icon, .login-icon, .welcome-icon, .staff-icon, .admin-icon {
+  box-shadow: 0 0 28px var(--bb-glow) !important;
+}
+.welcome-badge, .secure-badge, .login-security-label {
+  border-color: var(--bb-border) !important; background: var(--bb-surface) !important; color: var(--bb-blue) !important;
+}
+.welcome-section h1, .welcome-section h2, .portal-content h2, .login-card h1,
+.dashboard-welcome h1, .dashboard-header h1, .system-title, .card-header h2,
+.staff-management-top h2 { color: var(--bb-text) !important; }
+.welcome-section p, .portal-content p, .login-description, .stat-description, .table-date,
+.dashboard-welcome p, .dashboard-page-label, .sidebar-section-title, .login-footer,
+.login-security-note, .staff-management-top p { color: var(--bb-muted) !important; }
+.login-page { background: transparent !important; }
+.login-card { border: 1px solid var(--bb-border) !important; box-shadow: 0 28px 90px var(--bb-glow) !important; }
+.input-box, input, select, textarea {
+  background: var(--bb-surface-strong) !important; color: var(--bb-text) !important; border-color: var(--bb-border) !important;
+}
+input::placeholder, textarea::placeholder { color: var(--bb-muted) !important; }
+.input-group label, .staff-form label { color: var(--bb-text) !important; }
+.login-button, .portal-button, .admin-login-button, .staff-button, .add-staff-btn,
+.view-button, .view-all-button, .back-dashboard-btn { box-shadow: 0 12px 35px var(--bb-glow) !important; }
+.admin-sidebar, .sidebar-bottom, .sidebar-menu, .sidebar-brand {
+  background: var(--bb-surface-strong) !important; border-color: var(--bb-border) !important;
+}
+.sidebar-menu-item { color: var(--bb-muted) !important; border-color: transparent !important; }
+.sidebar-menu-item:hover, .sidebar-menu-item.active {
+  color: var(--bb-text) !important;
+  background: linear-gradient(135deg, rgba(37,99,235,.16), rgba(124,58,237,.16)) !important;
+  border-color: var(--bb-border) !important; box-shadow: 0 8px 28px var(--bb-glow) !important;
+}
+.sidebar-brand h2, .sidebar-brand span, .admin-profile-text strong, .admin-profile-text small, .system-title { color: var(--bb-text) !important; }
+.sidebar-logout { border-color: var(--bb-border) !important; }
+.dashboard-layout, .dashboard-main, .admin-dashboard { background: transparent !important; }
+.dashboard-header { background: transparent !important; }
+.stat-card, .dashboard-card, .activity-card, .progress-card, .overdue-card { border: 1px solid var(--bb-border) !important; }
+.stat-label, .card-label, .stat-trend, .progress-details, .progress-item, .activity-table,
+.staff-table, .staff-cell small, .security-item, .dashboard-footer { color: var(--bb-muted) !important; }
+.stat-card strong, .stat-card h3, .dashboard-card strong, .progress-card strong,
+.overdue-number, .activity-table strong, .table-row strong, .staff-cell strong { color: var(--bb-text) !important; }
+.staff-table, .activity-table, .table-header, .table-row { background: transparent !important; }
+.table-header { color: var(--bb-muted) !important; border-bottom-color: var(--bb-border) !important; }
+.table-row { color: var(--bb-text) !important; border-bottom-color: var(--bb-border) !important; }
+.table-row:hover { background: rgba(99, 102, 241, 0.08) !important; }
+.status-badge { border-color: var(--bb-border) !important; }
+.staff-form, .form-group, .form-row, .form-actions { color: var(--bb-text) !important; }
+.form-group input, .form-group select, .form-group textarea { box-shadow: inset 0 1px 0 rgba(255,255,255,.04) !important; }
+.quick-actions { background: transparent !important; }
+.quick-action { color: var(--bb-text) !important; }
+.quick-action strong, .quick-action small { color: var(--bb-text) !important; }
+.quick-action small { color: var(--bb-muted) !important; }
+
+.bandhan-theme-toggle {
+  position: fixed; right: 22px; bottom: 22px; z-index: 99999;
+  display: inline-flex; align-items: center; gap: 9px; min-width: 132px; justify-content: center;
+  padding: 11px 15px; border: 1px solid rgba(125,211,252,.28); border-radius: 999px;
+  background: linear-gradient(135deg, rgba(15,23,52,.88), rgba(38,28,78,.88)); color: #fff;
+  font: 600 13px/1.1 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer; box-shadow: 0 14px 45px rgba(37,99,235,.28), 0 0 35px rgba(124,58,237,.20);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.bandhan-theme-toggle:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 18px 55px rgba(37,99,235,.36), 0 0 45px rgba(124,58,237,.26); }
+.bandhan-theme-toggle:active { transform: translateY(0) scale(.98); }
+.bandhan-theme-toggle .theme-toggle-icon { font-size: 17px; line-height: 1; }
+.bandhan-theme-toggle.is-light { background: rgba(255,255,255,.88); color: #172033; border-color: rgba(37,99,235,.20); box-shadow: 0 14px 45px rgba(37,99,235,.18); }
+.app *, .admin-dashboard *, .login-page *, .bandhan-theme-toggle {
+  transition-property: background-color, border-color, color, box-shadow, opacity, transform;
+  transition-duration: .25s; transition-timing-function: ease;
+}
+@media (max-width: 700px) {
+  .bandhan-theme-toggle { right: 14px; bottom: 14px; min-width: 48px; width: 48px; height: 48px; padding: 0; gap: 0; }
+  .bandhan-theme-toggle > span:last-child { display: none; }
+}
+
+/* =========================================================
+   BANDHAN BANK — LIGHT MODE VISIBILITY FIX
+   Keeps the existing design. Only overrides dark hard-coded
+   surfaces/text when LIGHT mode is active.
+   ========================================================= */
+
+html[data-theme="light"],
+html:not([data-theme="dark"]) {
+  color-scheme: light;
+}
+
+html[data-theme="light"] body,
+html:not([data-theme="dark"]) body {
+  color: #172033 !important;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(59, 130, 246, 0.10), transparent 30%),
+    radial-gradient(circle at 88% 18%, rgba(124, 58, 237, 0.10), transparent 28%),
+    linear-gradient(135deg, #eef3ff, #f8faff) !important;
+}
+
+html[data-theme="light"] .app,
+html[data-theme="light"] .admin-dashboard,
+html[data-theme="light"] .login-page,
+html[data-theme="light"] .main-content,
+html:not([data-theme="dark"]) .app,
+html:not([data-theme="dark"]) .admin-dashboard,
+html:not([data-theme="dark"]) .login-page,
+html:not([data-theme="dark"]) .main-content {
+  color: #172033 !important;
+}
+
+/* Main glass panels */
+html[data-theme="light"] .top-header,
+html[data-theme="light"] .portal-card,
+html[data-theme="light"] .login-card,
+html[data-theme="light"] .dashboard-card,
+html[data-theme="light"] .stat-card,
+html[data-theme="light"] .activity-card,
+html[data-theme="light"] .progress-card,
+html[data-theme="light"] .staff-management-card,
+html[data-theme="light"] .staff-form,
+html[data-theme="light"] .staff-table-container,
+html[data-theme="light"] .security-section,
+html[data-theme="light"] .quick-action,
+html[data-theme="light"] .overdue-card,
+html[data-theme="light"] .admin-profile,
+html:not([data-theme="dark"]) .top-header,
+html:not([data-theme="dark"]) .portal-card,
+html:not([data-theme="dark"]) .login-card,
+html:not([data-theme="dark"]) .dashboard-card,
+html:not([data-theme="dark"]) .stat-card,
+html:not([data-theme="dark"]) .activity-card,
+html:not([data-theme="dark"]) .progress-card,
+html:not([data-theme="dark"]) .staff-management-card,
+html:not([data-theme="dark"]) .staff-form,
+html:not([data-theme="dark"]) .staff-table-container,
+html:not([data-theme="dark"]) .security-section,
+html:not([data-theme="dark"]) .quick-action,
+html:not([data-theme="dark"]) .overdue-card,
+html:not([data-theme="dark"]) .admin-profile {
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: #172033 !important;
+  border-color: rgba(89, 102, 150, 0.18) !important;
+  box-shadow: 0 20px 60px rgba(37, 54, 100, 0.12) !important;
+}
+
+/* Headings and important text */
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] strong,
+html[data-theme="light"] .system-title,
+html[data-theme="light"] .sidebar-brand h2,
+html[data-theme="light"] .admin-profile-text strong,
+html[data-theme="light"] .dashboard-welcome h2,
+html[data-theme="light"] .dashboard-header h1,
+html[data-theme="light"] .dashboard-welcome h1,
+html[data-theme="light"] .staff-management-top h2,
+html[data-theme="light"] .card-header h2,
+html[data-theme="light"] .stat-card h3,
+html[data-theme="light"] .stat-card strong,
+html[data-theme="light"] .dashboard-card strong,
+html[data-theme="light"] .progress-card strong,
+html[data-theme="light"] .overdue-number,
+html[data-theme="light"] .staff-cell strong,
+html[data-theme="light"] .table-row strong,
+html[data-theme="light"] .activity-table strong,
+html[data-theme="light"] .quick-action strong,
+html:not([data-theme="dark"]) h1,
+html:not([data-theme="dark"]) h2,
+html:not([data-theme="dark"]) h3,
+html:not([data-theme="dark"]) h4,
+html:not([data-theme="dark"]) strong,
+html:not([data-theme="dark"]) .system-title,
+html:not([data-theme="dark"]) .sidebar-brand h2,
+html:not([data-theme="dark"]) .admin-profile-text strong,
+html:not([data-theme="dark"]) .dashboard-welcome h2,
+html:not([data-theme="dark"]) .dashboard-header h1,
+html:not([data-theme="dark"]) .dashboard-welcome h1,
+html:not([data-theme="dark"]) .staff-management-top h2,
+html:not([data-theme="dark"]) .card-header h2,
+html:not([data-theme="dark"]) .stat-card h3,
+html:not([data-theme="dark"]) .stat-card strong,
+html:not([data-theme="dark"]) .dashboard-card strong,
+html:not([data-theme="dark"]) .progress-card strong,
+html:not([data-theme="dark"]) .overdue-number,
+html:not([data-theme="dark"]) .staff-cell strong,
+html:not([data-theme="dark"]) .table-row strong,
+html:not([data-theme="dark"]) .activity-table strong,
+html:not([data-theme="dark"]) .quick-action strong {
+  color: #172033 !important;
+}
+
+html[data-theme="light"] .dashboard-welcome p,
+html[data-theme="light"] .dashboard-page-label,
+html[data-theme="light"] .staff-management-top p,
+html[data-theme="light"] .stat-description,
+html[data-theme="light"] .stat-label,
+html[data-theme="light"] .card-label,
+html[data-theme="light"] .stat-trend,
+html[data-theme="light"] .progress-details,
+html[data-theme="light"] .progress-item,
+html[data-theme="light"] .staff-cell small,
+html[data-theme="light"] .security-item,
+html[data-theme="light"] .dashboard-footer,
+html[data-theme="light"] .quick-action small,
+html[data-theme="light"] .login-description,
+html[data-theme="light"] .login-security-note,
+html[data-theme="light"] .login-footer,
+html:not([data-theme="dark"]) .dashboard-welcome p,
+html:not([data-theme="dark"]) .dashboard-page-label,
+html:not([data-theme="dark"]) .staff-management-top p,
+html:not([data-theme="dark"]) .stat-description,
+html:not([data-theme="dark"]) .stat-label,
+html:not([data-theme="dark"]) .card-label,
+html:not([data-theme="dark"]) .stat-trend,
+html:not([data-theme="dark"]) .progress-details,
+html:not([data-theme="dark"]) .progress-item,
+html:not([data-theme="dark"]) .staff-cell small,
+html:not([data-theme="dark"]) .security-item,
+html:not([data-theme="dark"]) .dashboard-footer,
+html:not([data-theme="dark"]) .quick-action small,
+html:not([data-theme="dark"]) .login-description,
+html:not([data-theme="dark"]) .login-security-note,
+html:not([data-theme="dark"]) .login-footer {
+  color: #5b6b86 !important;
+}
+
+/* Tables: this fixes the exact problem visible in My Targets,
+   Verification, Reports and similar pages. */
+html[data-theme="light"] .staff-table,
+html[data-theme="light"] .activity-table,
+html[data-theme="light"] .table-header,
+html[data-theme="light"] .table-row,
+html:not([data-theme="dark"]) .staff-table,
+html:not([data-theme="dark"]) .activity-table,
+html:not([data-theme="dark"]) .table-header,
+html:not([data-theme="dark"]) .table-row {
+  background: transparent !important;
+  color: #172033 !important;
+}
+
+html[data-theme="light"] .table-header,
+html:not([data-theme="dark"]) .table-header {
+  color: #53627d !important;
+  border-bottom-color: rgba(89, 102, 150, 0.18) !important;
+}
+
+html[data-theme="light"] .table-row,
+html:not([data-theme="dark"]) .table-row {
+  color: #172033 !important;
+  border-bottom-color: rgba(89, 102, 150, 0.14) !important;
+}
+
+html[data-theme="light"] .table-row:hover,
+html:not([data-theme="dark"]) .table-row:hover {
+  background: rgba(99, 102, 241, 0.07) !important;
+}
+
+/* Forms and inputs */
+html[data-theme="light"] .form-group,
+html[data-theme="light"] .form-row,
+html[data-theme="light"] .form-actions,
+html[data-theme="light"] .input-group label,
+html[data-theme="light"] .staff-form label,
+html:not([data-theme="dark"]) .form-group,
+html:not([data-theme="dark"]) .form-row,
+html:not([data-theme="dark"]) .form-actions,
+html:not([data-theme="dark"]) .input-group label,
+html:not([data-theme="dark"]) .staff-form label {
+  color: #26344e !important;
+}
+
+html[data-theme="light"] .form-group input,
+html[data-theme="light"] .form-group select,
+html[data-theme="light"] .form-group textarea,
+html[data-theme="light"] .input-box,
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea,
+html:not([data-theme="dark"]) .form-group input,
+html:not([data-theme="dark"]) .form-group select,
+html:not([data-theme="dark"]) .form-group textarea,
+html:not([data-theme="dark"]) .input-box,
+html:not([data-theme="dark"]) input,
+html:not([data-theme="dark"]) select,
+html:not([data-theme="dark"]) textarea {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #172033 !important;
+  border-color: rgba(89, 102, 150, 0.22) !important;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder,
+html:not([data-theme="dark"]) input::placeholder,
+html:not([data-theme="dark"]) textarea::placeholder {
+  color: #71809a !important;
+}
+
+/* Staff cards */
+html[data-theme="light"] .staff-directory-card,
+html:not([data-theme="dark"]) .staff-directory-card {
+  background: rgba(255, 255, 255, 0.90) !important;
+  color: #172033 !important;
+  border-color: rgba(89, 102, 150, 0.18) !important;
+  box-shadow: 0 18px 55px rgba(37, 54, 100, 0.12) !important;
+}
+
+html[data-theme="light"] .staff-directory-card *:not(button),
+html:not([data-theme="dark"]) .staff-directory-card *:not(button) {
+  color: inherit;
+}
+
+html[data-theme="light"] .staff-directory-designation,
+html[data-theme="light"] .staff-directory-meta,
+html[data-theme="light"] .staff-profile-muted,
+html:not([data-theme="dark"]) .staff-directory-designation,
+html:not([data-theme="dark"]) .staff-directory-meta,
+html:not([data-theme="dark"]) .staff-profile-muted {
+  color: #61718d !important;
+}
+
+/* Profile page/modal */
+html[data-theme="light"] .staff-profile-panel,
+html[data-theme="light"] .staff-profile-shell,
+html[data-theme="light"] .staff-profile-modal,
+html:not([data-theme="dark"]) .staff-profile-panel,
+html:not([data-theme="dark"]) .staff-profile-shell,
+html:not([data-theme="dark"]) .staff-profile-modal {
+  color: #172033 !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(89, 102, 150, 0.18) !important;
+}
+
+html[data-theme="light"] .staff-profile-panel-label,
+html[data-theme="light"] .staff-profile-kicker,
+html[data-theme="light"] .staff-profile-eyebrow,
+html:not([data-theme="dark"]) .staff-profile-panel-label,
+html:not([data-theme="dark"]) .staff-profile-kicker,
+html:not([data-theme="dark"]) .staff-profile-eyebrow {
+  color: #5b6b86 !important;
+}
+
+html[data-theme="light"] .staff-profile-stat,
+html:not([data-theme="dark"]) .staff-profile-stat {
+  background: rgba(245, 248, 255, 0.94) !important;
+  color: #172033 !important;
+  border-color: rgba(89, 102, 150, 0.16) !important;
+}
+
+/* Notifications */
+html[data-theme="light"] .notification-item,
+html:not([data-theme="dark"]) .notification-item {
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: #172033 !important;
+  border-color: rgba(89, 102, 150, 0.16) !important;
+}
+
+html[data-theme="light"] .notification-item p,
+html[data-theme="light"] .notification-item small,
+html:not([data-theme="dark"]) .notification-item p,
+html:not([data-theme="dark"]) .notification-item small {
+  color: #61718d !important;
+}
+
+/* Keep the theme toggle itself readable */
+html[data-theme="light"] .bandhan-theme-toggle,
+html:not([data-theme="dark"]) .bandhan-theme-toggle {
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: #172033 !important;
+  border-color: rgba(37, 99, 235, 0.22) !important;
+  box-shadow: 0 14px 45px rgba(37, 99, 235, 0.18) !important;
+}
