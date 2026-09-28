@@ -1,0 +1,7 @@
+Flask
+Flask-Cors
+pymongo
+PyJWT
+python-dotenv
+resend
+gunicorn
